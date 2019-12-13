@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">8.dip</string>
+    <string name="enterPin">Введите пин-код</string>
+    <string name="textViewButton1">1</string>
+    <string name="textViewButton2">2</string>
+    <string name="textViewButton3">3</string>
+    <string name="textViewButton4">4</string>
+    <string name="textViewButton5">5</string>
+    <string name="textViewButton6">6</string>
+    <string name="textViewButton7">7</string>
+    <string name="textViewButton8">8</string>
+    <string name="textViewButton9">9</string>
+    <string name="textViewButton0">0</string>
+    <string name="textViewBackSpace"><![CDATA[<]]></string>
+
+</resources>
