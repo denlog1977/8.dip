@@ -20,10 +20,8 @@
         <item name="android:background">@color/colorButton</item>
     </style>
 
-    <style name="LinearLayout" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!--
-        <item name="android:background">@color/colorAccent</item>
-         -->
+    <style name="Layout" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:background">@color/colorLayout</item>
     </style>
 
     <style name="Stars" parent="Theme.AppCompat.Light.DarkActionBar">
