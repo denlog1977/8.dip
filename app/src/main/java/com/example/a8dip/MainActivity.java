@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    String pin;
+    String pin = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
