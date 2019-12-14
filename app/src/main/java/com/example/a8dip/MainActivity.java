@@ -10,11 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static com.example.a8dip.AppDiplomAnd.getKeystore;
-import static com.example.a8dip.AppDiplomAnd.getNoteRepository;
-
-
-public class MainActivity extends AppCompatActivity implements Keystore {
+public class MainActivity extends AppCompatActivity {
 
     private String pin = "";
     private String pinCorrect = "1977";
@@ -25,13 +21,14 @@ public class MainActivity extends AppCompatActivity implements Keystore {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        pin = "";
-
-
         mySharedPref = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
-        getNoteRepository();
-        getKeystore();
+        pin = "";
+
+        NoteRepository noteRepository = AppDiplomAnd.getNoteRepository();
+        Keystore keystore = AppDiplomAnd.getKeystore();
+
+
 
         setNumberClickListener((TextView) findViewById(R.id.textViewButton0));
         setNumberClickListener((TextView) findViewById(R.id.textViewButton1));
@@ -86,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements Keystore {
                             textView4.setText(Character.toString(pin.charAt(pin.length()-1)));
                             ImageView imageView4 = findViewById(R.id.imageView4);
                             imageView4.setVisibility(View.INVISIBLE);
-                            checkPin(pin);
+                            checkPinMainActivity(pin);
                             break;
                     }
                 } else {
@@ -99,12 +96,12 @@ public class MainActivity extends AppCompatActivity implements Keystore {
         });
     }
 
-    private void checkPin(String pin) {
-        if (hasPin()) {
-            saveNew(pin);
+    private void checkPinMainActivity(String pin) {
+        if (hasPinMainActivity()) {
+            saveNewPinMainActivity(pin);
             Toast.makeText(this, "pin сохранен в pinCode SharedPreferences", Toast.LENGTH_SHORT).show();
         } else {
-            if (matchPin(pin)) {
+            if (matchPinMainActivity(pin)) {
                 Intent intent = new Intent(MainActivity.this, NotesActivity.class);
                 MainActivity.this.finish();
                 startActivity(intent);
@@ -136,15 +133,15 @@ public class MainActivity extends AppCompatActivity implements Keystore {
         pin = "";
     }
 
-    private boolean hasPin() {
+    private boolean hasPinMainActivity() {
         return mySharedPref.getString("pinCode", "").isEmpty();
     };
 
-    private boolean matchPin(String pin) {
+    private boolean matchPinMainActivity(String pin) {
         return mySharedPref.getString("pinCode", "").equals(pin);
     }
 
-    private void saveNew(String pin){
+    private void saveNewPinMainActivity(String pin){
         SharedPreferences.Editor myEditor = mySharedPref.edit();
         myEditor.putString("pinCode", pin);
         myEditor.apply();

@@ -19,8 +19,9 @@ public class AppDiplomAnd extends Application {
         */
 
         noteRepository = new FileNoteRepository(this);
-//        keystore = new SimpleKeystore(this);
-        keystore = new HashedKeystore(this);
+        keystore = new SimpleKeystore(this);
+//        keystore = new HashedKeystore(this);
+
     }
     // Возвращаем интерфейс, а не конкретную реализацию!
     public static NoteRepository getNoteRepository() {

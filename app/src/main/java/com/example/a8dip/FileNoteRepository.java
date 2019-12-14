@@ -1,6 +1,12 @@
 package com.example.a8dip;
 
-public class FileNoteRepository {
+import android.app.Activity;
 
+public class FileNoteRepository extends NoteRepository {
 
+    AppDiplomAnd appDiplomAnd;
+
+    public FileNoteRepository(AppDiplomAnd appDiplomAnd) {
+        this.appDiplomAnd = appDiplomAnd;
+    }
 }
