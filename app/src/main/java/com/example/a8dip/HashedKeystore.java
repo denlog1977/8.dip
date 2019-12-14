@@ -1,6 +1,6 @@
 package com.example.a8dip;
 
-class SimpleKeystore implements Keystore {
+class HashedKeystore implements Keystore {
     @Override
     public boolean hasPin() {
         return false;
