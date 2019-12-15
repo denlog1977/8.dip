@@ -3,7 +3,7 @@ package com.example.a8dip;
 
 import android.app.Application;
 
-public class AppDiplomAnd extends Application {
+public class App extends Application {
 
     private static NoteRepository noteRepository;
     private static Keystore keystore;
@@ -18,11 +18,12 @@ public class AppDiplomAnd extends Application {
            мы заменяем реализацию во всем приложении!
         */
 
-        noteRepository = new FileNoteRepository(this);
-        keystore = new SimpleKeystore(this);
-//        keystore = new HashedKeystore(this);
-
+        noteRepository = new FileNoteRepository(this); /// Хранение заметок в файле
+        //noteRepository = new SqliteNoteRepository(this); /// Хранение заметок в sqlite
+        keystore = new SimpleKeystore(getSharedPreferences("MyPrefs", MODE_PRIVATE));
+        //keystore = new HashedKeystore(this);
     }
+
     // Возвращаем интерфейс, а не конкретную реализацию!
     public static NoteRepository getNoteRepository() {
         return noteRepository;

@@ -1,27 +1,35 @@
 package com.example.a8dip;
 
 
-import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.widget.Toast;
 
 class SimpleKeystore implements Keystore {
 
-    AppDiplomAnd appDiplomAnd;
+    private SharedPreferences preferences;
 
-    public SimpleKeystore(AppDiplomAnd appDiplomAnd) {
-        this.appDiplomAnd = appDiplomAnd;
+    public SimpleKeystore(SharedPreferences preferences) {
+        this.preferences = preferences;
     }
+
+
 
     @Override
     public boolean hasPin() {
-        return false;
+        return preferences.getString("pinCode", "").isEmpty();
     }
+
     @Override
-    public boolean checkPin(String pin) {
-        return false;
+    public boolean matchPin(String pin) {
+        return preferences.getString("pinCode", "").equals(pin);
     }
+
     @Override
     public void saveNew(String pin) {
-        Toast.makeText(appDiplomAnd, "!!!", Toast.LENGTH_SHORT).show();
+        SharedPreferences.Editor myEditor = preferences.edit();
+        myEditor.putString("pinCode", pin);
+        myEditor.apply();
+
     }
 }

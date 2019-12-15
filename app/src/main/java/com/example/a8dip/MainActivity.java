@@ -25,9 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
         pin = "";
 
-        NoteRepository noteRepository = AppDiplomAnd.getNoteRepository();
-        Keystore keystore = AppDiplomAnd.getKeystore();
-
 
 
         setNumberClickListener((TextView) findViewById(R.id.textViewButton0));
@@ -57,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Keystore keystore = App.getKeystore();
+
                 if (pin.length() < 4) {
                     pin = pin + button.getText().toString();
                     switch (pin.length()) {
@@ -83,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                             textView4.setText(Character.toString(pin.charAt(pin.length()-1)));
                             ImageView imageView4 = findViewById(R.id.imageView4);
                             imageView4.setVisibility(View.INVISIBLE);
-                            checkPinMainActivity(pin);
+                            checkPinMainActivity(pin, keystore);
                             break;
                     }
                 } else {
@@ -96,12 +95,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void checkPinMainActivity(String pin) {
-        if (hasPinMainActivity()) {
-            saveNewPinMainActivity(pin);
+    private void checkPinMainActivity(String pin, Keystore keystore) {
+        if (keystore.hasPin()) {
+            keystore.saveNew(pin);
             Toast.makeText(this, "pin сохранен в pinCode SharedPreferences", Toast.LENGTH_SHORT).show();
         } else {
-            if (matchPinMainActivity(pin)) {
+            if (keystore.matchPin(pin)) {
                 Intent intent = new Intent(MainActivity.this, NotesActivity.class);
                 MainActivity.this.finish();
                 startActivity(intent);
@@ -133,19 +132,22 @@ public class MainActivity extends AppCompatActivity {
         pin = "";
     }
 
+
+
+
+    /// + ------  Перенес в SimpleKeystore ------
     private boolean hasPinMainActivity() {
         return mySharedPref.getString("pinCode", "").isEmpty();
     };
-
     private boolean matchPinMainActivity(String pin) {
         return mySharedPref.getString("pinCode", "").equals(pin);
     }
-
     private void saveNewPinMainActivity(String pin){
         SharedPreferences.Editor myEditor = mySharedPref.edit();
         myEditor.putString("pinCode", pin);
         myEditor.apply();
     }
+    /// - ------  Перенес в SimpleKeystore ------
 
 
 }
