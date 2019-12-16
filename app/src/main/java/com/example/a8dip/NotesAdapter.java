@@ -9,7 +9,10 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class NotesAdapter extends BaseAdapter {
 
@@ -57,6 +60,12 @@ public class NotesAdapter extends BaseAdapter {
 
         ((TextView) (view.findViewById(R.id.textViewBody))).setText(Note.getBody());
         ((TextView) (view.findViewById(R.id.textViewHeadLine))).setText(Note.getHeadLine());
+
+        // Форматирование времени как "день.месяц.год"
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.getDefault());
+        String dateText = dateFormat.format(Note.getDeadLineDay());
+
+        ((TextView) (view.findViewById(R.id.textViewDeadLineDay))).setText(dateText);
 
 
         view.setOnClickListener(new View.OnClickListener() {

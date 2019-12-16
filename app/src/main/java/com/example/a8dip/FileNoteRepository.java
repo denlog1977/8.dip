@@ -1,7 +1,13 @@
 package com.example.a8dip;
 
+
+
+import java.util.Calendar;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
 
 public class FileNoteRepository implements NoteRepository {
 
@@ -23,11 +29,26 @@ public class FileNoteRepository implements NoteRepository {
     @Override
     public List<Note> getNotes(){
         List<Note> notes = new ArrayList<>();
-        notes.add(new Note("HeadLine", "Body" ));
-        notes.add(new Note("HeadLine", "Body" ));
-        notes.add(new Note("HeadLine", "Body" ));
-        notes.add(new Note("HeadLine", "Body" ));
-        notes.add(new Note("HeadLine", "Body" ));
+
+
+        Calendar c;
+
+        c = Calendar.getInstance();
+        c.setTime(new Date());
+        c.add(Calendar.DATE, new Random().nextInt(10) * 1000 * 60 * 60 * 24);
+        notes.add(new Note("HeadLine", "Body" , c.getTime()));
+
+        c = Calendar.getInstance();
+        c.setTime(new Date());
+        c.add(Calendar.DATE, new Random().nextInt(10) * 1000 * 60 * 60 * 24);
+        notes.add(new Note("HeadLine", "Body" , c.getTime()));
+
+        c = Calendar.getInstance();
+        c.setTime(new Date());
+        c.add(Calendar.DATE, new Random().nextInt(10) * 1000 * 60 * 60 * 24);
+        notes.add(new Note("HeadLine", "Body" , c.getTime()));
+
+
         return notes;
     }
 

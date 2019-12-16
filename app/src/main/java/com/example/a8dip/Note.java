@@ -1,5 +1,6 @@
 package com.example.a8dip;
 
+
 import java.util.Date;
 
 class Note {
@@ -20,6 +21,12 @@ class Note {
         this.headLine = headLine;
         this.body = body;
         this.hasDeadLine = hasDeadLine;
+    }
+
+    public Note(String headLine, String body, Date deadLineDay) {
+        this.headLine = headLine;
+        this.body = body;
+        this.deadLineDay = deadLineDay;
     }
 
     public Note(String headLine, String body) {

@@ -23,13 +23,6 @@ public class NotesActivity extends AppCompatActivity {
         ListView listViewNotes = findViewById(R.id.listViewNotes);
 
         List<Note> notes = noteRepository.getNotes();
-//        List<Note> notes = new List<>();
-//
-//        notes.add(new Note("HeadLine", "Body" ));
-//        notes.add(new Note("HeadLine", "Body" ));
-//        notes.add(new Note("HeadLine", "Body" ));
-//        notes.add(new Note("HeadLine", "Body" ));
-//        notes.add(new Note("HeadLine", "Body" ));
 
         final NotesAdapter adapter = new NotesAdapter(this, notes);
 
