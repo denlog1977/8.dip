@@ -13,11 +13,6 @@ public class App extends Application {
         super.onCreate();
 
 
-        /* Конкретная реализация выбирается только здесь.
-           Изменением одной строчки здесь,
-           мы заменяем реализацию во всем приложении!
-        */
-
         noteRepository = new FileNoteRepository(this); /// Хранение заметок в файле
         //noteRepository = new SqliteNoteRepository(this); /// Хранение заметок в sqlite
         keystore = new SimpleKeystore(getSharedPreferences("MyPrefs", MODE_PRIVATE));

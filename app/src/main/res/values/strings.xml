@@ -12,6 +12,8 @@
     <string name="textViewButton9">9</string>
     <string name="textViewButton0">0</string>
     <string name="textViewBackSpace"><![CDATA[<]]></string>
+    <string name="action_settings">Настройки</string>
+
 
 
 </resources>

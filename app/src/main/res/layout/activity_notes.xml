@@ -4,11 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorLayout"
     tools:context=".NotesActivity">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="86dp"
+        android:layout_gravity="bottom|right"
+        android:background="@android:drawable/presence_online"
+        android:foreground="@android:drawable/ic_input_add" />
 
     <ListView
         android:id="@+id/listViewNotes"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        >
+
+    </ListView>
+
 
 </FrameLayout>

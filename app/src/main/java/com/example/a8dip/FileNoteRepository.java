@@ -36,18 +36,27 @@ public class FileNoteRepository implements NoteRepository {
         c = Calendar.getInstance();
         c.setTime(new Date());
         c.add(Calendar.DATE, new Random().nextInt(10) * 1000 * 60 * 60 * 24);
-        notes.add(new Note("HeadLine", "Body" , c.getTime()));
+        notes.add(new Note("Добавить", "Добавить новую текстовую заметку: заголовок, текстовое содержание, дедлайн;" , c.getTime()));
 
         c = Calendar.getInstance();
         c.setTime(new Date());
         c.add(Calendar.DATE, new Random().nextInt(10) * 1000 * 60 * 60 * 24);
-        notes.add(new Note("HeadLine", "Body" , c.getTime()));
+        notes.add(new Note("Отредактировать", "Отредактировать существующую заметку;" , c.getTime()));
 
         c = Calendar.getInstance();
         c.setTime(new Date());
         c.add(Calendar.DATE, new Random().nextInt(10) * 1000 * 60 * 60 * 24);
-        notes.add(new Note("HeadLine", "Body" , c.getTime()));
+        notes.add(new Note("Просмотреть", "Просмотреть список сохраненных заметок;" , c.getTime()));
 
+        c = Calendar.getInstance();
+        c.setTime(new Date());
+        c.add(Calendar.DATE, new Random().nextInt(10) * 1000 * 60 * 60 * 24);
+        notes.add(new Note("Пин-код", "Ограничить доступ к заметкам с помощью пин-кода;" , c.getTime()));
+
+        c = Calendar.getInstance();
+        c.setTime(new Date());
+        c.add(Calendar.DATE, new Random().nextInt(10) * 1000 * 60 * 60 * 24);
+        notes.add(new Note("Меню настроек", "Изменить пин-код в меню настроек." , c.getTime()));
 
         return notes;
     }
