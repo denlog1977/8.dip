@@ -16,21 +16,23 @@
         android:hint="@string/headline"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <EditText
         android:id="@+id/editTextBody"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="top"
         android:hint="@string/body"
         android:inputType="textMultiLine|textPersonName"
-        android:lineHeight="@dimen/cardview_compat_inset_shadow"
+        android:minLines="10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextHeadLine" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/checkBoxHasDeadLine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hasDeadLine"
@@ -41,15 +43,20 @@
         android:id="@+id/textViewDeadLine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/textViewDeadLine"
-        app:layout_constraintStart_toStartOf="@+id/checkBox"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/checkBoxHasDeadLine"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxHasDeadLine"
+
+
+        />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewDeadLine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/textViewDeadLine"
         app:layout_constraintTop_toTopOf="@+id/textViewDeadLine"
-        app:srcCompat="@android:drawable/ic_menu_day" />
+        app:srcCompat="@android:drawable/ic_menu_day"
+        android:visibility="gone"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
