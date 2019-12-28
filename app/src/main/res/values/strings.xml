@@ -13,6 +13,12 @@
     <string name="textViewButton0">0</string>
     <string name="textViewBackSpace"><![CDATA[<]]></string>
     <string name="action_settings">Настройки</string>
+    <string name="headline">Заголовок</string>
+    <string name="body">Основной текст заметки</string>
+    <string name="hasDeadLine">Срок выполнения</string>
+    <string name="textViewDeadLine">31.12.2019 23:59:59</string>
+
+
 
 
 

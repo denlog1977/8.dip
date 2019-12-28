@@ -16,7 +16,7 @@ public class App extends Application {
         noteRepository = new FileNoteRepository(this); /// Хранение заметок в файле
         //noteRepository = new SqliteNoteRepository(this); /// Хранение заметок в sqlite
         keystore = new SimpleKeystore(getSharedPreferences("MyPrefs", MODE_PRIVATE));
-        //keystore = new HashedKeystore(this);
+        ///keystore = new HashedKeystore(this);
     }
 
     // Возвращаем интерфейс, а не конкретную реализацию!

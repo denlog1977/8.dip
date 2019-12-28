@@ -11,4 +11,5 @@
         android:title="@string/action_settings"
         android:icon="@drawable/ic_action_name"
         app:showAsAction="always"/>
+
 </menu>
