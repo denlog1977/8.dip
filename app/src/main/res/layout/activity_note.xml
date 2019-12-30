@@ -41,14 +41,11 @@
 
     <TextView
         android:id="@+id/textViewDeadLine"
+        android:text="@string/SetDeadLineDay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         app:layout_constraintStart_toStartOf="@+id/checkBoxHasDeadLine"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxHasDeadLine"
-
-
-        />
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxHasDeadLine" />
 
     <ImageView
         android:id="@+id/imageViewDeadLine"
@@ -56,7 +53,5 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/textViewDeadLine"
         app:layout_constraintTop_toTopOf="@+id/textViewDeadLine"
-        app:srcCompat="@android:drawable/ic_menu_day"
-        android:visibility="gone"
-        />
+        app:srcCompat="@android:drawable/ic_menu_my_calendar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

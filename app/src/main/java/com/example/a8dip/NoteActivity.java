@@ -5,6 +5,7 @@ import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,6 +28,8 @@ public class NoteActivity extends AppCompatActivity implements DatePickerDialog.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         checkBoxHasDeadLine = findViewById(R.id.checkBoxHasDeadLine);
         textViewDeadLine = findViewById(R.id.textViewDeadLine);
@@ -59,7 +62,6 @@ public class NoteActivity extends AppCompatActivity implements DatePickerDialog.
         });
 
 
-
     }
 
     @Override
@@ -71,10 +73,20 @@ public class NoteActivity extends AppCompatActivity implements DatePickerDialog.
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Toast.makeText(this, R.string.action_save_note, Toast.LENGTH_SHORT).show();
-        this.finish();
+
+        Log.i("denLogs", "item.getItemId() = " + item.getItemId());
+        Log.i("denLogs", "item = " + item);
+
+        if (item.getItemId() == android.R.id.home) {
+            Toast.makeText(this, R.string.action_back, Toast.LENGTH_SHORT).show();
+            this.finish();
+        } else if (item.getItemId() == R.menu.edit) {
+            Toast.makeText(this, R.string.action_save_note, Toast.LENGTH_SHORT).show();
+            this.finish();
+        }
         return super.onOptionsItemSelected(item);
     }
+
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int day) {
