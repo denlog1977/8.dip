@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -36,14 +37,18 @@ public class NotesActivity extends AppCompatActivity {
 
         listViewNotes.setAdapter(adapter);
 
-        Button buttonAdd = findViewById(R.id.buttonAdd);
-        buttonAdd.setOnClickListener(new View.OnClickListener() {
+
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
+                Toast.makeText(NotesActivity.this, "FloatingActionButton", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(NotesActivity.this, NoteActivity.class);
                 startActivity(intent);
             }
         });
+
 
     }
 

@@ -7,23 +7,25 @@
     android:background="@color/colorLayout"
     tools:context=".NotesActivity">
 
-    <Button
-        android:id="@+id/buttonAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="86dp"
-        android:layout_gravity="bottom|right"
-        android:background="@android:drawable/presence_online"
-        android:foreground="@android:drawable/ic_input_add" />
 
     <ListView
         android:id="@+id/listViewNotes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:divider="@android:color/transparent"
         android:dividerHeight="20dp"/>
 
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="20dp"
+        android:tint="@android:color/white"
+        app:backgroundTint="@android:color/holo_orange_dark"
+        app:srcCompat="@android:drawable/ic_input_add" />
 
 </FrameLayout>
