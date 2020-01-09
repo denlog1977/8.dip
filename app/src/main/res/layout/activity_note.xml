@@ -26,7 +26,7 @@
         android:gravity="top"
         android:hint="@string/body"
         android:inputType="textMultiLine|textPersonName"
-        android:minLines="10"
+        android:minLines="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextHeadLine" />

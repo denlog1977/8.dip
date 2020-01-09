@@ -77,11 +77,14 @@ public class NoteActivity extends AppCompatActivity implements DatePickerDialog.
         Log.i("denLogs", "item.getItemId() = " + item.getItemId());
         Log.i("denLogs", "item = " + item);
 
-        if (item.getItemId() == android.R.id.home) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
             Toast.makeText(this, R.string.action_back, Toast.LENGTH_SHORT).show();
             this.finish();
-        } else if (item.getItemId() == R.menu.edit) {
+        } else if (id ==  R.id.action_save_note) {
             Toast.makeText(this, R.string.action_save_note, Toast.LENGTH_SHORT).show();
+            Log.i("denLogs", "R.id.action_save_note");
             this.finish();
         }
         return super.onOptionsItemSelected(item);
