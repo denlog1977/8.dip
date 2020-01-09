@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Keystore keystore = App.getKeystore();
+//                Keystore keystore = App.getKeystore();
 
                 if (pin.length() < 4) {
                     pin = pin + button.getText().toString();
@@ -82,7 +82,8 @@ public class MainActivity extends AppCompatActivity {
                             textView4.setText(Character.toString(pin.charAt(pin.length()-1)));
                             ImageView imageView4 = findViewById(R.id.imageView4);
                             imageView4.setVisibility(View.INVISIBLE);
-                            checkPinMainActivity(pin, keystore);
+//                            checkPinMainActivity(pin, keystore);
+                            checkPinMainActivity(pin);
                             break;
                     }
                 } else {
@@ -95,7 +96,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void checkPinMainActivity(String pin, Keystore keystore) {
+    private void checkPinMainActivity(String pin) { ///, Keystore keystore
+
+        Keystore keystore = App.getKeystore();
+
         if (keystore.hasPin()) {
             keystore.saveNew(pin);
             Toast.makeText(this, "pin сохранен в pinCode SharedPreferences", Toast.LENGTH_SHORT).show();
@@ -134,20 +138,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-    /// + ------  Перенес в SimpleKeystore ------
-    private boolean hasPinMainActivity() {
-        return mySharedPref.getString("pinCode", "").isEmpty();
-    };
-    private boolean matchPinMainActivity(String pin) {
-        return mySharedPref.getString("pinCode", "").equals(pin);
-    }
-    private void saveNewPinMainActivity(String pin){
-        SharedPreferences.Editor myEditor = mySharedPref.edit();
-        myEditor.putString("pinCode", pin);
-        myEditor.apply();
-    }
-    /// - ------  Перенес в SimpleKeystore ------
 
 
 }
