@@ -20,6 +20,9 @@
     <string name="hasDeadLine">Срок выполнения</string>
     <string name="textViewDeadLine">31.12.2019 23:59:59</string>
     <string name="SetDeadLineDay">Установите дату дедлайна</string>
+    <string name="notes">Заметки</string>
+    <string name="note">Заметка</string>
+
 
 
 
