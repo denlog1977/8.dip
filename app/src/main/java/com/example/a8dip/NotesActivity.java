@@ -25,6 +25,7 @@ public class NotesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
+        setTitle(R.string.notes);
 
         NoteRepository noteRepository = App.getNoteRepository();
 

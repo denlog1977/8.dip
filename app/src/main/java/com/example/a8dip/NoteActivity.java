@@ -28,6 +28,7 @@ public class NoteActivity extends AppCompatActivity implements DatePickerDialog.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note);
+        setTitle(R.string.note);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
