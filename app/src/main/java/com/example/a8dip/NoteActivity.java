@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -19,6 +20,8 @@ import android.widget.Toast;
 public class NoteActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
     private long mDate;
+    private TextView textViewHeadLine;
+    private TextView textViewBody;
     private TextView textViewDeadLine;
     private ImageView imageViewDeadLine;
     private CheckBox checkBoxHasDeadLine;
@@ -32,6 +35,8 @@ public class NoteActivity extends AppCompatActivity implements DatePickerDialog.
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        textViewHeadLine = findViewById(R.id.textViewHeadLine);
+        textViewBody = findViewById(R.id.textViewBody);
         checkBoxHasDeadLine = findViewById(R.id.checkBoxHasDeadLine);
         textViewDeadLine = findViewById(R.id.textViewDeadLine);
         imageViewDeadLine = findViewById(R.id.imageViewDeadLine);
@@ -62,6 +67,11 @@ public class NoteActivity extends AppCompatActivity implements DatePickerDialog.
             }
         });
 
+        Intent intent = this.getIntent();
+        textViewHeadLine.setText(intent.getStringExtra("headLine"));
+        textViewBody.setText(intent.getStringExtra("body"));
+        checkBoxHasDeadLine.setChecked(intent.getBooleanExtra("hasDeadLine", true));
+        textViewDeadLine.setText(intent.getStringExtra("deadLineDay"));
 
     }
 
