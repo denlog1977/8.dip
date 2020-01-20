@@ -19,9 +19,8 @@ import android.widget.Toast;
 
 public class NoteActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
-    private long mDate;
-    private TextView textViewHeadLine;
-    private TextView textViewBody;
+    private TextView editTextHeadLine;
+    private TextView editTextBody;
     private TextView textViewDeadLine;
     private ImageView imageViewDeadLine;
     private CheckBox checkBoxHasDeadLine;
@@ -35,11 +34,18 @@ public class NoteActivity extends AppCompatActivity implements DatePickerDialog.
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        textViewHeadLine = findViewById(R.id.textViewHeadLine);
-        textViewBody = findViewById(R.id.textViewBody);
+        editTextHeadLine = findViewById(R.id.editTextHeadLine);
+        editTextBody = findViewById(R.id.editTextBody);
         checkBoxHasDeadLine = findViewById(R.id.checkBoxHasDeadLine);
         textViewDeadLine = findViewById(R.id.textViewDeadLine);
         imageViewDeadLine = findViewById(R.id.imageViewDeadLine);
+
+        Bundle bundle = getIntent().getExtras();
+        if(bundle.getString("headLine")!= null) { editTextHeadLine.setText(bundle.getString("headLine")); }
+        if(bundle.getString("body")!= null) { editTextBody.setText(bundle.getString("body")); }
+//        if(bundle.getBoolean("hasDeadLine")!= null) { }
+        if(bundle.getString("deadLineDay")!= null) { textViewDeadLine.setText(bundle.getString("deadLineDay")); }
+        checkBoxHasDeadLine.setChecked(bundle.getBoolean("hasDeadLine", true));
 
         checkBoxHasDeadLine.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -52,8 +58,6 @@ public class NoteActivity extends AppCompatActivity implements DatePickerDialog.
                     textViewDeadLine.setVisibility(View.GONE);
                     imageViewDeadLine.setVisibility(View.GONE);
                 }
-
-
             }
         });
 
@@ -62,22 +66,13 @@ public class NoteActivity extends AppCompatActivity implements DatePickerDialog.
             public void onClick(View v) {
                 DialogFragment datePicker = new DatePickerFragment();
                 datePicker.show(getSupportFragmentManager(), "datePicker");
-
-
             }
         });
-
-        Intent intent = this.getIntent();
-        textViewHeadLine.setText(intent.getStringExtra("headLine"));
-        textViewBody.setText(intent.getStringExtra("body"));
-        checkBoxHasDeadLine.setChecked(intent.getBooleanExtra("hasDeadLine", true));
-        textViewDeadLine.setText(intent.getStringExtra("deadLineDay"));
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.edit, menu);
         return true;
     }

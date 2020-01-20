@@ -17,22 +17,6 @@ class Note {
         this.deadLineDay = deadLineDay;
     }
 
-    public Note(String headLine, String body, boolean hasDeadLine) {
-        this.headLine = headLine;
-        this.body = body;
-        this.hasDeadLine = hasDeadLine;
-    }
-
-    public Note(String headLine, String body, Date deadLineDay) {
-        this.headLine = headLine;
-        this.body = body;
-        this.deadLineDay = deadLineDay;
-    }
-
-    public Note(String headLine, String body) {
-        this.headLine = headLine;
-        this.body = body;
-    }
 
     public String getHeadLine() {
         return headLine;

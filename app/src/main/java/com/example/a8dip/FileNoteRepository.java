@@ -36,32 +36,32 @@ public class FileNoteRepository implements NoteRepository {
         c = Calendar.getInstance();
         c.setTime(new Date());
         c.add(Calendar.DATE, new Random().nextInt(10) * 1000 * 60 * 60 * 24);
-        notes.add(new Note("Добавить", "Добавить новую текстовую заметку: заголовок, текстовое содержание, дедлайн;" , c.getTime()));
+        notes.add(new Note("Добавить", "Добавить новую текстовую заметку: заголовок, текстовое содержание, дедлайн;", true, c.getTime()));
 
         c = Calendar.getInstance();
         c.setTime(new Date());
         c.add(Calendar.DATE, new Random().nextInt(10) * 1000 * 60 * 60 * 24);
-        notes.add(new Note("Добавить новую текстовую заметку: заголовок, текстовое содержание, дедлайн", "Добавить новую текстовую заметку: заголовок, текстовое содержание, дедлайн. Добавить новую текстовую заметку: заголовок, текстовое содержание, дедлайн;" , c.getTime()));
+        notes.add(new Note("Добавить новую текстовую заметку: заголовок, текстовое содержание, дедлайн", "Добавить новую текстовую заметку: заголовок, текстовое содержание, дедлайн. Добавить новую текстовую заметку: заголовок, текстовое содержание, дедлайн;", true, c.getTime()));
 
         c = Calendar.getInstance();
         c.setTime(new Date());
         c.add(Calendar.DATE, new Random().nextInt(10) * 1000 * 60 * 60 * 24);
-        notes.add(new Note("Отредактировать", "Отредактировать существующую заметку;" , c.getTime()));
+        notes.add(new Note("Отредактировать", "Отредактировать существующую заметку;", true, c.getTime()));
 
         c = Calendar.getInstance();
         c.setTime(new Date());
         c.add(Calendar.DATE, new Random().nextInt(10) * 1000 * 60 * 60 * 24);
-        notes.add(new Note("Просмотреть", "Просмотреть список сохраненных заметок;" , c.getTime()));
+        notes.add(new Note("Просмотреть", "Просмотреть список сохраненных заметок;", true, c.getTime()));
 
         c = Calendar.getInstance();
         c.setTime(new Date());
         c.add(Calendar.DATE, new Random().nextInt(10) * 1000 * 60 * 60 * 24);
-        notes.add(new Note("Пин-код", "Ограничить доступ к заметкам с помощью пин-кода;" , c.getTime()));
+        notes.add(new Note("Пин-код", "Ограничить доступ к заметкам с помощью пин-кода;", true, c.getTime()));
 
         c = Calendar.getInstance();
         c.setTime(new Date());
         c.add(Calendar.DATE, new Random().nextInt(10) * 1000 * 60 * 60 * 24);
-        notes.add(new Note("Меню настроек", "Изменить пин-код в меню настроек." , c.getTime()));
+        notes.add(new Note("Меню настроек", "Изменить пин-код в меню настроек.", true, c.getTime()));
 
         return notes;
     }

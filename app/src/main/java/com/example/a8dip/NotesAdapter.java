@@ -2,6 +2,8 @@ package com.example.a8dip;
 
 import android.content.Context;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,22 +58,44 @@ public class NotesAdapter extends BaseAdapter {
             view = layoutInflater.inflate(R.layout.notes_item, parent, false);
         }
 
-        final Note Note = getNote(position);
-
-        ((TextView) (view.findViewById(R.id.textViewBody))).setText(Note.getBody());
-        ((TextView) (view.findViewById(R.id.textViewHeadLine))).setText(Note.getHeadLine());
-
+        final Note note = getNote(position);
         // Форматирование времени как "день.месяц.год"
         DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.getDefault());
-        String dateText = dateFormat.format(Note.getDeadLineDay());
+        final String dateText = dateFormat.format(note.getDeadLineDay());
 
-        ((TextView) (view.findViewById(R.id.textViewDeadLineDay))).setText(dateText);
+//        ((TextView) (view.findViewById(R.id.textViewBody))).setText(Note.getBody());
+//        ((TextView) (view.findViewById(R.id.textViewHeadLine))).setText(Note.getHeadLine());
+//        ((TextView) (view.findViewById(R.id.textViewDeadLineDay))).setText(dateText);
+        TextView textViewHeadLine = view.findViewById(R.id.textViewHeadLine);
+        TextView textViewBody = view.findViewById(R.id.textViewBody);
+        TextView textViewDeadLineDay = view.findViewById(R.id.textViewDeadLineDay);
+//        CheckBox checkBoxHasDeadLine = view.findViewById(R.id.checkBoxHasDeadLine);
+
+        final String getHeadLine = note.getHeadLine();
+
+        textViewHeadLine.setText(getHeadLine);
+        textViewBody.setText(note.getBody());
+        textViewDeadLineDay.setText(dateText);
+//        checkBoxHasDeadLine.setTag(position);
+//        checkBoxHasDeadLine.setChecked(note.isHasDeadLine());
 
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ctx, " view onClick Позиция № " + Integer.toString(position + 1), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(ctx, " view onClick Позиция № " + Integer.toString(position + 1), Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(ctx, getHeadLine, Toast.LENGTH_SHORT).show();
+
+
+                Intent intent = new Intent(ctx, NoteActivity.class);
+                Bundle extras = intent.getExtras();
+//                extras.putString("headLine", getHeadLine);
+//                extras.putString("body", note.getBody().toString());
+//                extras.putBoolean("hasDeadLine", note.isHasDeadLine());
+//                extras.putString("deadLineDay", dateText);
+                ctx.startActivity(intent);
+
             }
         });
 
