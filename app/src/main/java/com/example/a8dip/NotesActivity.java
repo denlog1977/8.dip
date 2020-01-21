@@ -28,13 +28,23 @@ public class NotesActivity extends AppCompatActivity {
 
         NoteRepository noteRepository = App.getNoteRepository();
 
-
-        ListView listViewNotes = findViewById(R.id.listViewNotes);
-
         List<Note> notes = noteRepository.getNotes();
+
+        Bundle bundle = getIntent().getExtras();
+        int position = bundle.getInt("position");
+        if(position < 0) {
+            Toast.makeText(NotesActivity.this, "position = " + position, Toast.LENGTH_SHORT).show();
+        } else {
+            Note note = notes.get(position);
+            note.setHeadLine(bundle.getString("headLine"));
+            note.setBody(bundle.getString("body"));
+            note.setHasDeadLine(bundle.getBoolean("hasDeadLine"));
+//            note.setDeadLineDay(bundle.getString("deadLineDay"));
+        }
 
         final NotesAdapter adapter = new NotesAdapter(this, notes);
 
+        ListView listViewNotes = findViewById(R.id.listViewNotes);
         listViewNotes.setAdapter(adapter);
 
 
@@ -43,8 +53,14 @@ public class NotesActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(NotesActivity.this, "FloatingActionButton", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(NotesActivity.this, "FloatingActionButton", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(NotesActivity.this, NoteActivity.class);
+                Bundle extras = new Bundle();
+                extras.putString("headLine", "");
+                extras.putString("body", "");
+                extras.putBoolean("hasDeadLine", false);
+                extras.putString("deadLineDay", "");
+                intent.putExtras(extras);
                 startActivity(intent);
             }
         });

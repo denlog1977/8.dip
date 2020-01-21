@@ -34,7 +34,7 @@ class Note {
         this.body = body;
     }
 
-    public boolean isHasDeadLine() {
+    public boolean getHasDeadLine() {
         return hasDeadLine;
     }
 
@@ -47,6 +47,8 @@ class Note {
     }
 
     public void setDeadLineDay(Date deadLineDay) {
+
         this.deadLineDay = deadLineDay;
+
     }
 }

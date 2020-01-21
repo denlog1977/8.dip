@@ -46,7 +46,7 @@ public class FileNoteRepository implements NoteRepository {
         c = Calendar.getInstance();
         c.setTime(new Date());
         c.add(Calendar.DATE, new Random().nextInt(10) * 1000 * 60 * 60 * 24);
-        notes.add(new Note("Отредактировать", "Отредактировать существующую заметку;", true, c.getTime()));
+        notes.add(new Note("Отредактировать", "Отредактировать существующую заметку;", false, new Date()));
 
         c = Calendar.getInstance();
         c.setTime(new Date());

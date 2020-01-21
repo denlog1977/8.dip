@@ -36,14 +36,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hasDeadLine"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/editTextBody"
         app:layout_constraintTop_toBottomOf="@+id/editTextBody" />
 
     <TextView
         android:id="@+id/textViewDeadLine"
-        android:text="@string/SetDeadLineDay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/SetDeadLineDay"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/checkBoxHasDeadLine"
         app:layout_constraintTop_toBottomOf="@+id/checkBoxHasDeadLine" />
 
@@ -53,5 +55,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/textViewDeadLine"
         app:layout_constraintTop_toTopOf="@+id/textViewDeadLine"
-        app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+        app:srcCompat="@android:drawable/ic_menu_my_calendar"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

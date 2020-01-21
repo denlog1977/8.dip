@@ -69,33 +69,26 @@ public class NotesAdapter extends BaseAdapter {
         TextView textViewHeadLine = view.findViewById(R.id.textViewHeadLine);
         TextView textViewBody = view.findViewById(R.id.textViewBody);
         TextView textViewDeadLineDay = view.findViewById(R.id.textViewDeadLineDay);
-//        CheckBox checkBoxHasDeadLine = view.findViewById(R.id.checkBoxHasDeadLine);
 
-        final String getHeadLine = note.getHeadLine();
 
-        textViewHeadLine.setText(getHeadLine);
+        textViewHeadLine.setText(note.getHeadLine());
         textViewBody.setText(note.getBody());
         textViewDeadLineDay.setText(dateText);
-//        checkBoxHasDeadLine.setTag(position);
-//        checkBoxHasDeadLine.setChecked(note.isHasDeadLine());
 
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(ctx, " view onClick Позиция № " + Integer.toString(position + 1), Toast.LENGTH_SHORT).show();
-
-                Toast.makeText(ctx, getHeadLine, Toast.LENGTH_SHORT).show();
-
-
                 Intent intent = new Intent(ctx, NoteActivity.class);
-                Bundle extras = intent.getExtras();
-//                extras.putString("headLine", getHeadLine);
-//                extras.putString("body", note.getBody().toString());
-//                extras.putBoolean("hasDeadLine", note.isHasDeadLine());
-//                extras.putString("deadLineDay", dateText);
+                Bundle extras = new Bundle();
+                extras.putInt("position", position);
+                extras.putString("headLine", note.getHeadLine());
+                extras.putString("body", note.getBody());
+                extras.putBoolean("hasDeadLine", note.getHasDeadLine());
+                extras.putString("deadLineDay", dateText);
+                intent.putExtras(extras);
                 ctx.startActivity(intent);
-
             }
         });
 

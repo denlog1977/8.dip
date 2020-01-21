@@ -43,9 +43,16 @@ public class NoteActivity extends AppCompatActivity implements DatePickerDialog.
         Bundle bundle = getIntent().getExtras();
         if(bundle.getString("headLine")!= null) { editTextHeadLine.setText(bundle.getString("headLine")); }
         if(bundle.getString("body")!= null) { editTextBody.setText(bundle.getString("body")); }
-//        if(bundle.getBoolean("hasDeadLine")!= null) { }
+//        if(bundle.getBoolean("hasDeadLine") == !null) { }
         if(bundle.getString("deadLineDay")!= null) { textViewDeadLine.setText(bundle.getString("deadLineDay")); }
         checkBoxHasDeadLine.setChecked(bundle.getBoolean("hasDeadLine", true));
+        if (checkBoxHasDeadLine.isChecked()) {
+            textViewDeadLine.setVisibility(View.VISIBLE);
+            imageViewDeadLine.setVisibility(View.VISIBLE);
+        } else {
+            textViewDeadLine.setVisibility(View.GONE);
+            imageViewDeadLine.setVisibility(View.GONE);
+        }
 
         checkBoxHasDeadLine.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -53,7 +60,7 @@ public class NoteActivity extends AppCompatActivity implements DatePickerDialog.
                 if (isChecked) {
                     textViewDeadLine.setVisibility(View.VISIBLE);
                     imageViewDeadLine.setVisibility(View.VISIBLE);
-                    textViewDeadLine.setText(R.string.SetDeadLineDay);
+//                    textViewDeadLine.setText(R.string.SetDeadLineDay);
                 } else {
                     textViewDeadLine.setVisibility(View.GONE);
                     imageViewDeadLine.setVisibility(View.GONE);
@@ -91,6 +98,8 @@ public class NoteActivity extends AppCompatActivity implements DatePickerDialog.
         } else if (id ==  R.id.action_save_note) {
             Toast.makeText(this, R.string.action_save_note, Toast.LENGTH_SHORT).show();
             Log.i("denLogs", "R.id.action_save_note");
+
+
             this.finish();
         }
         return super.onOptionsItemSelected(item);

@@ -106,6 +106,9 @@ public class MainActivity extends AppCompatActivity {
         } else {
             if (keystore.matchPin(pin)) {
                 Intent intent = new Intent(MainActivity.this, NotesActivity.class);
+                Bundle extras = new Bundle();
+                extras.putInt("position", -1);
+                intent.putExtras(extras);
                 MainActivity.this.finish();
                 startActivity(intent);
             } else {
