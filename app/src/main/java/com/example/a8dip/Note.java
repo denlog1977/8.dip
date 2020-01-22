@@ -8,15 +8,27 @@ class Note {
     String headLine;
     String body;
     boolean hasDeadLine;
-    Date deadLineDay;
+//    Date deadLineDay;
+    String deadLineDay;
 
-    public Note(String headLine, String body, boolean hasDeadLine, Date deadLineDay) {
+//    public Note(String headLine, String body, boolean hasDeadLine, Date deadLineDay) {
+//        this.headLine = headLine;
+//        this.body = body;
+//        this.hasDeadLine = hasDeadLine;
+//        this.deadLineDay = deadLineDay;
+//    }
+    public Note(String headLine, String body, boolean hasDeadLine, String deadLineDay) {
         this.headLine = headLine;
         this.body = body;
         this.hasDeadLine = hasDeadLine;
         this.deadLineDay = deadLineDay;
     }
 
+    public Note(String headLine, String body, boolean hasDeadLine) {
+        this.headLine = headLine;
+        this.body = body;
+        this.hasDeadLine = hasDeadLine;
+    }
 
     public String getHeadLine() {
         return headLine;
@@ -42,13 +54,20 @@ class Note {
         this.hasDeadLine = hasDeadLine;
     }
 
-    public Date getDeadLineDay() {
+//    public Date getDeadLineDay() {
+//        return deadLineDay;
+//    }
+//
+//    public void setDeadLineDay(Date deadLineDay) {
+//        this.deadLineDay = deadLineDay;
+//    }
+
+    public String getDeadLineDay() {
         return deadLineDay;
     }
 
-    public void setDeadLineDay(Date deadLineDay) {
-
+    public void setDeadLineDay(String deadLineDay) {
         this.deadLineDay = deadLineDay;
-
     }
+
 }

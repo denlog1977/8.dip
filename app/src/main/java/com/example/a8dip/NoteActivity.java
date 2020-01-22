@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class NoteActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
     private TextView editTextHeadLine;
@@ -24,6 +26,7 @@ public class NoteActivity extends AppCompatActivity implements DatePickerDialog.
     private TextView textViewDeadLine;
     private ImageView imageViewDeadLine;
     private CheckBox checkBoxHasDeadLine;
+    private int position;
 
 
     @Override
@@ -41,9 +44,9 @@ public class NoteActivity extends AppCompatActivity implements DatePickerDialog.
         imageViewDeadLine = findViewById(R.id.imageViewDeadLine);
 
         Bundle bundle = getIntent().getExtras();
+        if(bundle.getString("position")!= null) { position = bundle.getInt("position"); }
         if(bundle.getString("headLine")!= null) { editTextHeadLine.setText(bundle.getString("headLine")); }
         if(bundle.getString("body")!= null) { editTextBody.setText(bundle.getString("body")); }
-//        if(bundle.getBoolean("hasDeadLine") == !null) { }
         if(bundle.getString("deadLineDay")!= null) { textViewDeadLine.setText(bundle.getString("deadLineDay")); }
         checkBoxHasDeadLine.setChecked(bundle.getBoolean("hasDeadLine", true));
         if (checkBoxHasDeadLine.isChecked()) {
@@ -99,8 +102,25 @@ public class NoteActivity extends AppCompatActivity implements DatePickerDialog.
             Toast.makeText(this, R.string.action_save_note, Toast.LENGTH_SHORT).show();
             Log.i("denLogs", "R.id.action_save_note");
 
+            NoteRepository noteRepository = App.getNoteRepository();
 
-            this.finish();
+            List<Note> notes = noteRepository.getNotes();
+
+            if(position < 0) {
+//                Toast.makeText(NotesActivity.this, "position = " + position, Toast.LENGTH_SHORT).show();
+                Note note = new Note(editTextHeadLine.getText().toString(), editTextBody.getText().toString(), checkBoxHasDeadLine.isChecked());
+                notes.add(note);
+                noteRepository.saveNotes(notes);
+                this.finish();
+            } else {
+                Note note = notes.get(position);
+                note.setHeadLine(editTextHeadLine.getText().toString());
+                note.setBody(editTextBody.getText().toString());
+                note.setHasDeadLine(checkBoxHasDeadLine.isChecked());
+//                note.setDeadLineDay(textViewDeadLine.getText().toString()));
+                noteRepository.saveNotes(notes);
+                this.finish();
+            }
         }
         return super.onOptionsItemSelected(item);
     }

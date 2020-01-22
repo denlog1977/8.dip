@@ -30,17 +30,17 @@ public class NotesActivity extends AppCompatActivity {
 
         List<Note> notes = noteRepository.getNotes();
 
-        Bundle bundle = getIntent().getExtras();
-        int position = bundle.getInt("position");
-        if(position < 0) {
-            Toast.makeText(NotesActivity.this, "position = " + position, Toast.LENGTH_SHORT).show();
-        } else {
-            Note note = notes.get(position);
-            note.setHeadLine(bundle.getString("headLine"));
-            note.setBody(bundle.getString("body"));
-            note.setHasDeadLine(bundle.getBoolean("hasDeadLine"));
-//            note.setDeadLineDay(bundle.getString("deadLineDay"));
-        }
+//        Bundle bundle = getIntent().getExtras();
+//        int position = bundle.getInt("position");
+//        if(position < 0) {
+//            Toast.makeText(NotesActivity.this, "position = " + position, Toast.LENGTH_SHORT).show();
+//        } else {
+//            Note note = notes.get(position);
+//            note.setHeadLine(bundle.getString("headLine"));
+//            note.setBody(bundle.getString("body"));
+//            note.setHasDeadLine(bundle.getBoolean("hasDeadLine"));
+////            note.setDeadLineDay(bundle.getString("deadLineDay"));
+//        }
 
         final NotesAdapter adapter = new NotesAdapter(this, notes);
 
@@ -56,6 +56,7 @@ public class NotesActivity extends AppCompatActivity {
 //                Toast.makeText(NotesActivity.this, "FloatingActionButton", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(NotesActivity.this, NoteActivity.class);
                 Bundle extras = new Bundle();
+                extras.putInt("position", -1);
                 extras.putString("headLine", "");
                 extras.putString("body", "");
                 extras.putBoolean("hasDeadLine", false);
