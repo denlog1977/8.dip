@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -110,7 +109,7 @@ public class NoteActivity extends AppCompatActivity implements DatePickerDialog.
 //                Toast.makeText(NotesActivity.this, "position = " + position, Toast.LENGTH_SHORT).show();
                 Note note = new Note(editTextHeadLine.getText().toString(), editTextBody.getText().toString(), checkBoxHasDeadLine.isChecked());
                 notes.add(note);
-                noteRepository.saveNotes(notes);
+                noteRepository.saveNotes(this, notes);
                 this.finish();
             } else {
                 Note note = notes.get(position);
@@ -118,7 +117,7 @@ public class NoteActivity extends AppCompatActivity implements DatePickerDialog.
                 note.setBody(editTextBody.getText().toString());
                 note.setHasDeadLine(checkBoxHasDeadLine.isChecked());
 //                note.setDeadLineDay(textViewDeadLine.getText().toString()));
-                noteRepository.saveNotes(notes);
+                noteRepository.saveNotes(this, notes);
                 this.finish();
             }
         }

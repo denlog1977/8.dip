@@ -13,7 +13,6 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private String pin = "";
-    private String pinCorrect = "1977";
     private SharedPreferences mySharedPref;
 
     @Override

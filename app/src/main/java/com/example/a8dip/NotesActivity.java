@@ -81,9 +81,14 @@ public class NotesActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Toast.makeText(this, R.string.action_settings, Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(NotesActivity.this, SettingsActivity.class);
-        startActivity(intent);
+
+        NoteRepository noteRepository = App.getNoteRepository();
+        List<Note> notes = noteRepository.getNotes();
+        noteRepository.saveNotes(this, notes);
+
+//        Toast.makeText(this, R.string.action_settings, Toast.LENGTH_SHORT).show();
+//        Intent intent = new Intent(NotesActivity.this, SettingsActivity.class);
+//        startActivity(intent);
         return super.onOptionsItemSelected(item);
     }
 

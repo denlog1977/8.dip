@@ -6,6 +6,6 @@ import java.util.List;
 interface NoteRepository {
     Note getNoteById(String id);
     List<Note> getNotes();
-    void saveNotes(List<Note> notes);
+    void saveNotes(NotesActivity notesActivity, List<Note> notes);
     void deleteById(String id);
 }

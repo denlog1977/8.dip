@@ -27,7 +27,7 @@ public class SqliteNoteRepository implements NoteRepository{
     }
 
     @Override
-    public void saveNotes(List<Note> notes){
+    public void saveNotes(NotesActivity notesActivity, List<Note> notes){
         ///
     }
 
