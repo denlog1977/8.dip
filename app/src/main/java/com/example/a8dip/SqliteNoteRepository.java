@@ -1,5 +1,7 @@
 package com.example.a8dip;
 
+import android.content.Context;
+
 import java.util.List;
 
 public class SqliteNoteRepository implements NoteRepository{
@@ -21,13 +23,13 @@ public class SqliteNoteRepository implements NoteRepository{
     }
 
     @Override
-    public List<Note> getNotes(){
+    public List<Note> getNotes(Context ctx){
         ///
         return listNotes;
     }
 
     @Override
-    public void saveNotes(NotesActivity notesActivity, List<Note> notes){
+    public void saveNotes(Context ctx, List<Note> notes){
         ///
     }
 

@@ -103,10 +103,10 @@ public class NoteActivity extends AppCompatActivity implements DatePickerDialog.
 
             NoteRepository noteRepository = App.getNoteRepository();
 
-            List<Note> notes = noteRepository.getNotes();
+            List<Note> notes = noteRepository.getNotes(this);
 
             if(position < 0) {
-//                Toast.makeText(NotesActivity.this, "position = " + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "position = " + position, Toast.LENGTH_SHORT).show();
                 Note note = new Note(editTextHeadLine.getText().toString(), editTextBody.getText().toString(), checkBoxHasDeadLine.isChecked());
                 notes.add(note);
                 noteRepository.saveNotes(this, notes);

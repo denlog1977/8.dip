@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -28,19 +29,19 @@ public class NotesActivity extends AppCompatActivity {
 
         NoteRepository noteRepository = App.getNoteRepository();
 
-        List<Note> notes = noteRepository.getNotes();
+        List<Note> notes = noteRepository.getNotes(this);
 
-//        Bundle bundle = getIntent().getExtras();
-//        int position = bundle.getInt("position");
-//        if(position < 0) {
-//            Toast.makeText(NotesActivity.this, "position = " + position, Toast.LENGTH_SHORT).show();
-//        } else {
-//            Note note = notes.get(position);
-//            note.setHeadLine(bundle.getString("headLine"));
-//            note.setBody(bundle.getString("body"));
-//            note.setHasDeadLine(bundle.getBoolean("hasDeadLine"));
-////            note.setDeadLineDay(bundle.getString("deadLineDay"));
-//        }
+        Bundle bundle = getIntent().getExtras();
+        int position = bundle.getInt("position");
+        if(position < 0) {
+            Toast.makeText(NotesActivity.this, "position = " + position, Toast.LENGTH_SHORT).show();
+        } else {
+            Note note = notes.get(position);
+            note.setHeadLine(bundle.getString("headLine"));
+            note.setBody(bundle.getString("body"));
+            note.setHasDeadLine(bundle.getBoolean("hasDeadLine"));
+//            note.setDeadLineDay(bundle.getString("deadLineDay"));
+        }
 
         final NotesAdapter adapter = new NotesAdapter(this, notes);
 
@@ -83,7 +84,7 @@ public class NotesActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         NoteRepository noteRepository = App.getNoteRepository();
-        List<Note> notes = noteRepository.getNotes();
+        List<Note> notes = noteRepository.getNotes(this);
         noteRepository.saveNotes(this, notes);
 
 //        Toast.makeText(this, R.string.action_settings, Toast.LENGTH_SHORT).show();

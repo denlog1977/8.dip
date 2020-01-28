@@ -91,7 +91,7 @@ public class FileNoteRepository implements NoteRepository {
                 String[] notesArray = str.split("\n");
                 for(int i=0; i < notesArray.length; i+=3) {
                     Log.i("myLogs", "Выбранная позиция: " + i);
-                    Log.i("myLogs", "Значение элемента массива: " + notesArray(i));
+                    Log.i("myLogs", "Значение элемента массива: " + notesArray[i]);
                     String headLine = notesArray[i];
                     String body = notesArray[i+1];
                     String deadLineDay = notesArray[i+2];
