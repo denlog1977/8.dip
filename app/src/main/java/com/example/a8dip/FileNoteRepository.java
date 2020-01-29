@@ -88,10 +88,11 @@ public class FileNoteRepository implements NoteRepository {
                 while((line = bufferedReader.readLine()) != null) {
                     str += line + "\n"; // содержимое файла на экран построчно
                 }
+                Log.i("denLogs", "str = \n" + str);
                 String[] notesArray = str.split("\n");
                 for(int i=0; i < notesArray.length; i+=3) {
-                    Log.i("myLogs", "Выбранная позиция: " + i);
-                    Log.i("myLogs", "Значение элемента массива: " + notesArray[i]);
+                    Log.i("denLogs", "Выбранная позиция: " + i);
+                    Log.i("denLogs", "Значение элемента массива: " + notesArray[i]);
                     String headLine = notesArray[i];
                     String body = notesArray[i+1];
                     String deadLineDay = notesArray[i+2];
@@ -157,7 +158,7 @@ public class FileNoteRepository implements NoteRepository {
             outputStream.write(notesString.getBytes());
             outputStream.close();
             Toast.makeText(ctx, "записаны notes ВО внутренний ФАЙЛ notes.txt ", Toast.LENGTH_SHORT).show();
-            Log.i("myLogs", "записаны notes ВО внутренний ФАЙЛ notes.txt ");
+            Log.i("denLogs", "записаны notes ВО внутренний ФАЙЛ notes.txt ");
         }
         catch (Exception e) {
             e.printStackTrace();

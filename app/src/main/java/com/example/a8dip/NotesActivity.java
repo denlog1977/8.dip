@@ -85,6 +85,8 @@ public class NotesActivity extends AppCompatActivity {
 
         NoteRepository noteRepository = App.getNoteRepository();
         List<Note> notes = noteRepository.getNotes(this);
+        Toast.makeText(NotesActivity.this, "getNotes notes.size() = " + notes.size(), Toast.LENGTH_SHORT).show();
+
         noteRepository.saveNotes(this, notes);
 
 //        Toast.makeText(this, R.string.action_settings, Toast.LENGTH_SHORT).show();
